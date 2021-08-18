@@ -39,16 +39,34 @@ Airplane.prototype.land = function () {
         + It should return a string with `name` and `age`. Example: "Mary, 50"
 */
 
-function Person() {
-  
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+  this.stomach = [];
 }
 
+Person.prototype.eat = function (food) {
+  if (this.stomach.length < 10) {
+    this.stomach.push(food);
+  }
+}
 
+Person.prototype.poop = function () {
+  this.stomach = [];
+}
 
+Person.prototype.toString = function () {
+  return `${this.name}, ${this.age}`;
+}
 
-
-
-
+const bob = new Person('Bob', 21);
+bob.eat('Burger');
+bob.eat('Custard ice cream');
+bob.eat('Fries');
+console.log(bob.stomach);
+bob.poop();
+console.log(bob.stomach);
+console.log('task 1', bob.toString());
 /*
   TASK 2
     - Write a Car constructor that initializes `model` and `milesPerGallon` from arguments.
@@ -64,7 +82,7 @@ function Person() {
 */
 
 function Car() {
-  
+
 }
 
 
@@ -76,7 +94,7 @@ function Car() {
         + Should return a string "Playing with x", x being the favorite toy.
 */
 function Baby() {
- 
+
 }
 
 
@@ -93,14 +111,14 @@ function Baby() {
 ///////// END OF CHALLENGE /////////
 
 /* 🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑 */
-function foo(){
+function foo() {
   console.log('its working!');
   return 'bar';
 }
 foo();
 module.exports = {
   foo,
-  Person, 
+  Person,
   Car,
   Baby
 }
