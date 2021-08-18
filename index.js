@@ -81,11 +81,20 @@ console.log('task 1', bob.toString());
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
 
-function Car() {
-
+function Car(model, milesPerGallon) {
+  this.model = model;
+  this.milesPerGallon = milesPerGallon
+  this.tank = 0;
+  this.odometer = 0;
 }
-
-
+Car.prototype.fill = function (gallons) {
+  this.tank = this.tank + gallons
+}
+Car.prototype.info = function () {
+  return `model: ${this.model}, MPG: ${this.milesPerGallon}`
+}
+const toyota = new Car('Corolla', 30);
+console.log('task 2', toyota.info());
 /*
   TASK 3
     - Write a Baby constructor subclassing Person.
