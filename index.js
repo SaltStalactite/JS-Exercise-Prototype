@@ -89,12 +89,30 @@ function Car(model, milesPerGallon) {
 }
 Car.prototype.fill = function (gallons) {
   this.tank = this.tank + gallons
+  return `fuel: ${this.tank}`
 }
 Car.prototype.info = function () {
-  return `model: ${this.model}, MPG: ${this.milesPerGallon}`
+  return `model: ${this.model}, MPG: ${this.milesPerGallon}, odometer: ${this.odometer}, tank: ${this.tank}`
+}
+Car.prototype.drive = function (distance) {
+  let range = this.tank * this.milesPerGallon;
+  let fuelUsed = distance / this.milesPerGallon;
+  if (this.tank > 0 && distance < range) {
+    this.odometer = this.odometer + distance;
+    this.tank = this.tank - fuelUsed;
+    return this.info()
+  }
+  else {
+    this.odometer = this.odometer + range;
+    this.tank = this.tank - fuelUsed;
+    return `I ran out of fuel at ${this.odometer} miles!`
+  }
+
 }
 const toyota = new Car('Corolla', 30);
 console.log('task 2', toyota.info());
+console.log(toyota.fill(12));
+console.log(toyota.drive(200));
 /*
   TASK 3
     - Write a Baby constructor subclassing Person.
