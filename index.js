@@ -115,10 +115,10 @@ console.log('task 3', isaac.play());
 /* 
   TASK 4
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+  1. If the 'this' keyword has no context it will return the window object or if in node the global object.
+  2. The object before a dot calling a function is the context of 'this' in implicit binding.
+  3. In new binding 'this refers to the object being created and returned in an instance of a constructor function.
+  4. In explicit binding 'this' is defined explicitly through the use of '.call' and '.apply' on the object.
 */
 
 
